@@ -1,0 +1,19 @@
+- name: Hello World Sample
+  hosts: all
+  tasks:
+    - name: Hello Kubernetes
+      debug:
+        msg: "Hello Kubernetes!"
+        
+    - name: Create a pod in Kubernetes
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: my-pod
+          spec:
+            containers:
+            - name: my-container
+              image: nginx
